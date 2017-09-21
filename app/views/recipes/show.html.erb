@@ -10,15 +10,29 @@
   <%= @recipe.makes %>
 </p>
 
-<p>
-  <strong>Steps:</strong>
-  <%= @recipe.steps %>
-</p>
+<% unless @recipe.steps.empty? %>
+  <p>
+    <strong>Steps:</strong>
+    <%= @recipe.step_names %>
+  </p>
+  <% else %>
+  <p>This recipe has no steps.</p>
+<% end %>
 
-<p>
-  <strong>Ingredients:</strong>
-  <%= @recipe.ingredients %>
-</p>
+<% unless @recipe.ingredients.empty? %>
+  <p>
+    <strong>Ingredients:</strong>
+    <%= @recipe.ingredient_names %>
+  </p>
+  <% else %>
+  <p>This recipe has no ingredients.</p>
+<% end %>
 
+<%= link_to 'Add steps', new_recipe_step_path(@recipe) %>
+<br>
+<br>
+<%= link_to 'Add ingredients', new_recipe_ingredient_path(@recipe) %>
+<br>
+<br>
 <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
 <%= link_to 'Back', recipes_path %>
