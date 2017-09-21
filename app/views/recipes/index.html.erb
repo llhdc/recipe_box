@@ -19,7 +19,7 @@
         <td><%= recipe.name %></td>
         <td><%= recipe.makes %></td>
         <td><%= recipe.step_names %></td>
-        <td><%= recipe.ingredients.to_json %></td>
+        <td><%= recipe.ingredient_names %></td>
         <td><%= link_to 'Show', recipe %></td>
         <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
         <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
