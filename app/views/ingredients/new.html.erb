@@ -1,1 +1,3 @@
-<h1>New Ingredient</h1>
+<h1>New Ingredient for <%= @recipe.name %></h1>
+<%= render 'form', ingredient: @ingredient %>
+<%= link_to 'Back to Recipe', recipe_path(@recipe) %>
