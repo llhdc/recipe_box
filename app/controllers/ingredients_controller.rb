@@ -1,14 +1,21 @@
 class IngredientsController < ApplicationController
-  def index
-    @recipe = Recipe.find(params[:recipe_id])
-    @ingredients = Ingredient.all
-  end
-
-  def show
-
-  end
-
   def new
     @recipe = Recipe.find(params[:recipe_id])
+    @ingredient = @recipe.ingredients.build
   end
+
+  def create
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredient = @recipe.ingredients.build(ingredient_params)
+    if @ingredient.save
+      redirect_to recipe_path(@recipe)
+    end
+  end
+
+  private
+
+  def ingredient_params
+    params.require(:ingredient).permit(:element, :quantity, :metric_measurement)
+  end
+
 end
