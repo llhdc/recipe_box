@@ -21,7 +21,7 @@
           <li><%= step.description %></li>
         </ul>
       </td>
-      <td><%= link_to 'Edit Step', edit_recipe_step_path(@recipe, step) %></td>
+      <td><%= link_to 'Edit Step', edit_recipe_step_path(@recipe, step) %> | <%= link_to 'Delete', recipe_step_path(@recipe, step), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   </tbody>
 <% end %>
@@ -44,7 +44,7 @@
               <li><%= ingredient.element %></li>
             </ul>
           </td>
-          <td><%= link_to 'Edit Ingredient', edit_recipe_ingredient_path(@recipe, ingredient) %></td>
+          <td><%= link_to 'Edit', edit_recipe_ingredient_path(@recipe, ingredient) %> | <%= link_to 'Delete', recipe_ingredient_path(@recipe, ingredient), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       </tbody>
     <% end %>

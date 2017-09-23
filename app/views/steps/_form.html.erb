@@ -1,4 +1,4 @@
-<%= form_with(model: [recipe, step], local: true) do |form| %>
+<%= form_with(model: [@recipe, step], local: true) do |form| %>
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description, id: :step_description %>

@@ -27,7 +27,12 @@ class StepsController < ApplicationController
   end
 
   def destroy
+    @recipe = Recipe.find(params[:recipe_id])
+    @step = @recipe.steps.find(params[:id])
 
+    if @step.destroy
+      redirect_to recipe_path(@recipe)
+    end
   end
 
   private
