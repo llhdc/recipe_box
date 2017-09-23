@@ -1,0 +1,6 @@
+<h1>Editing <%= @recipe.name %> Step</h1>
+
+<%= render 'form', recipe: @recipe, step: @step %>
+
+<%= link_to 'Show', @recipe %> |
+<%= link_to 'Back', recipes_path %>

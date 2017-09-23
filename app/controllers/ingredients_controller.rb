@@ -12,6 +12,24 @@ class IngredientsController < ApplicationController
     end
   end
 
+  def edit
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredient = @recipe.ingredients.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:recipe_id])
+    @ingredient = @recipe.ingredients.find(params[:id])
+
+    if @ingredient.update(ingredient_params)
+      redirect_to recipe_path(@recipe)
+    end
+  end
+
+  def destroy
+
+  end
+
   private
 
   def ingredient_params

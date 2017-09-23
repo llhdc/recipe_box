@@ -11,26 +11,48 @@
 </p>
 
 <% unless @recipe.steps.empty? %>
-  <p>
-    <strong>Steps:</strong>
-    <%= @recipe.step_names %>
-  </p>
+<table>
+  <strong>Steps:</strong>
+  <tbody>
+    <% @recipe.steps.each do |step| %>
+    <tr>
+      <td>
+        <ul>
+          <li><%= step.description %></li>
+        </ul>
+      </td>
+      <td><%= link_to 'Edit Step', edit_recipe_step_path(@recipe, step) %></td>
+    </tr>
+  </tbody>
+<% end %>
+</table>
   <% else %>
   <p>This recipe has no steps.</p>
 <% end %>
+<%= link_to 'Add steps', new_recipe_step_path(@recipe) %>
+<br>
+<br>
 
 <% unless @recipe.ingredients.empty? %>
-  <p>
-    <strong>Ingredients:</strong>
-    <%= @recipe.ingredient_names %>
-  </p>
+    <table>
+      <strong>Ingredients:</strong>
+      <tbody>
+        <% @recipe.ingredients.each do |ingredient| %>
+        <tr>
+          <td>
+            <ul>
+              <li><%= ingredient.element %></li>
+            </ul>
+          </td>
+          <td><%= link_to 'Edit Ingredient', edit_recipe_ingredient_path(@recipe, ingredient) %></td>
+        </tr>
+      </tbody>
+    <% end %>
+    </table>
   <% else %>
   <p>This recipe has no ingredients.</p>
 <% end %>
 
-<%= link_to 'Add steps', new_recipe_step_path(@recipe) %>
-<br>
-<br>
 <%= link_to 'Add ingredients', new_recipe_ingredient_path(@recipe) %>
 <br>
 <br>
